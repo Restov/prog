@@ -1,4 +1,3 @@
-
 #include <iostream>
 #include <vector>
 #include <iomanip>
@@ -23,16 +22,29 @@
 using namespace std;
 int Func3(int n) 
 { 
- int temp=0; 
- for(int i = 1; i <= n; i++)
-   {
-      for(int j = 1; j <= i; j++)
-      { 
-        if(i % j == 0) temp++; 
-      }        
- if(temp == 2) cout << i << " ";
- temp = 0; 
-    } 
+ int a[n];
+ for(int i = 0; i < n; i++)
+ {
+    a[i] = i;
+ }
+       a[1] = 0;
+       for(int s = 2; s < n; s++)
+       {
+           if(a[s] != 0)
+           {
+               for(int j = s * 2; j < n; j+=s)
+               {
+                   a[j]=0;
+               }
+           }
+       }
+       for(int i = 0; i < n; i++)
+       {
+           if(a[i] != 0)
+           {
+                cout << a[i] << " ";
+           }
+       }
 }
 int main()
 {
