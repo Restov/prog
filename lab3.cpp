@@ -34,7 +34,7 @@ void SSort(int n, double**a)
   {  
     mina = i;  
     for (j = i+1; j < n; j++)  
-      if (a[j] < a[mina])  
+      if (*a[j] < *a[mina])  
         mina = j;  
       swap(a[mina], a[i]);  
   }  
