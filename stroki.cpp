@@ -24,22 +24,22 @@ char *find(char *p, int &k)
 {                            
 	char *q;
 	for(*p != 0;p++;)      
-	for(q=p+1; *q!=0;q++)
-	 {
-		 for(k=0;q[k]!=0 && p+k<q && p[k] == q[k];k++); 
-		 if(k>=2) return p;   
-	 }
-	 return 0;     
-}
+		for(q=p+1; *q!=0;q++)
+		{
+			for(k=0;q[k]!=0 && p+k<q && p[k] == q[k];k++); 
+				if(k>=2) return p;   
+		}
+		return 0;     
+	}
 
 int main()
 {
-    int sz,b=1;
-    char *q;
-    char *stroka;
-    cin >> stroka;
-    for(q=find(stroka,sz);
-    q!=0;
-    q=find(q+sz,sz))
-    cout << b++ << " " << q << endl;                            
+	int sz,b=1;
+	char *q;
+	char *stroka;
+	cin >> stroka;
+	for(q=find(stroka,sz);
+	q!=0;
+	q=find(q+sz,sz))
+	cout << b++ << " " << q << endl;                            
 }
