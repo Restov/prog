@@ -1,72 +1,134 @@
-#include <iostream>
-#include <vector>
-#include <iomanip>
-#include <algorithm>
-#include <nmmintrin.h>
-#include <set>
-#include <map>
-#include <unordered_set>
-#include <unordered_map>
-#include <string>
-#include <queue>
-#include <cmath>
-#include <climits>
-#include <bitset>
-#include <random>
-#include <ctime>
-#include <chrono>
-#include <cstdio>
-#include <cstring>
-#include <cassert>
-#include <sstream>
+
+//many thanks to tryblyat7 for her contribution
+#include <bits/stdc++.h>
 using namespace std;
-int MaxEl (int **a, int n, int m)
-{
-    int max=a[0][0];
-    int str = 0,stl = 0;
-    for(int i = 0; i < n; i++)
-    {
-        for (int j = 0; j < n; j++)
-        {
-        if (max<a[i][j])
-          {
-            max=a[i][j];
-            str=i+1;
-            stl=j+1;
-          }
+void pervoe(int m){
+    int n = 5, ii, jj;
+    int **b = new int*[n];
+    for (int i = 0; i < n; ++i){
+        b[i] = new int[m];
+    }
+    for(int i = 0; i < n; ++i){
+        for (int j = 0; j < m; ++j){
+            b[i][j]=rand()%101-50;
         }
     }
-    cout << endl << "__________________" << endl;
-    cout << str << " " << stl << " " << max << endl;
-
+    int max=b[0][0];
+    for(int i = 0; i < n; ++i){
+        for (int j = 0; j < m; ++j){
+            if(b[i][j] > max){
+                max = b[i][j];
+                ii = i;
+                jj = j;
+            }
+        }
+    }
+    cout << " MAX = "  << max<< " I= "<< ii<< " j= "<< jj<< endl;
+    cout << "arr"<< endl;
+    for(int i = 0; i < n; ++i){
+        for (int j = 0; j < m; ++j){
+            cout << b[i][j] << "\t";
+        }
+        cout << endl;
+    }
+    cout<< endl;
+    for(int i = ii; i < n-1; ++i){
+        for (int j = 0; j < m; ++j){
+            int temp = b[i][j];  
+            b[i][j] = b[i+1][j];  
+            b[i+1][j] = temp;
+            
+        }
+    }
+    for(int i = 0; i < n; ++i){
+        for (int j = jj; j < m-1; ++j){
+            int temp = b[i][j];  
+            b[i][j] = b[i][j+1];  
+            b[i][j+1] = temp;
+            
+        }
+        
+    }
+    cout << " new arr"<< endl;
+    for(int i = 0; i < n-1; ++i){
+        for (int j = 0; j < m-1; ++j){
+            cout << b[i][j] << "\t";
+        }
+        cout << endl;
+    }
+    for (int i = 0; i < n; ++i){
+        delete[] b[i];
+    }
+    delete[] b;
 }
-int main()
-{
-    int m, n;
+
+void vtoroe(int M, int n) {
+    int sum = 0, str = 0, st = 0;
+    int **a = new int*[n];
+    for (int i = 0; i < n; ++i){
+        a[i] = new int[M];
+    }
+    for(int i = 0; i < n; ++i){
+        for (int j = 0; j < M; ++j){
+            a[i][j]=rand()%101-50;
+            sum+= a[i][j];
+        }
+    }
+    cout <<"sum = "<< sum << endl << "arr"<< endl;
+    for(int i = 0; i < n; ++i){
+        for (int j = 0; j < M; ++j){
+            cout << a[i][j] << "\t";
+        }
+        cout << endl;
+    }
+    cout<< endl;
+    int **d = new int*[n+1];
+    for (int i = 0; i < n+1; ++i){
+        d[i] = new int[M+1];
+    }
+    for(int i = 0; i < n; ++i){
+        for (int j = 0; j < M+1; ++j){
+            if(j==M){
+                d[i][j]=str;
+            }
+            else {
+                d[i][j]=a[i][j];
+                str+= d[i][j];
+            }
+        }
+        str = 0;
+    }
+    for(int j = 0; j < M; ++j){
+        for (int i = 0; i < n+1; ++i){
+            if(i==n){
+                d[i][j]=st;
+            }
+            else {
+                st+= d[i][j];
+            }
+        }
+        st = 0;
+    }
+    cout<< endl;
+    cout << "new arr"<< endl;
+    for(int i = 0; i < n+1; ++i){
+        for (int j = 0; j < M+1; ++j){
+            if(i==n&&j==M){
+                d[i][j]=sum;
+            }
+            cout << d[i][j] << "\t";
+        }
+        cout << endl;
+    }
+    cout<< endl;
+}
+int main(){
     srand(time(0));
+    int m, n, M;
     cin >> m;
-    n = 5;
-    int ** arr = new int*[m]; 
-    for (int i = 0; i < m; i++) 
-        arr[i] = new int[n]; 
-    for (int i = 0; i < m; i++) 
-    {
-        for (int j = 0; j < n; j++) 
-        {
-            arr[i][j] = rand() % 110 - 10;
-        }
-    }
-    for (int i = 0; i < m; i++) 
-    {
-        for (int j = 0; j < n; j++)
-        {
-            cout << arr[i][j] << " ";
-        }
+    pervoe(m);
     cout << endl;
-    }
-    MaxEl(arr,n,m);
-    for (int i = 0; i < m; i++)
-    delete arr[i];
-    delete arr; 
-
+    cin >> M >> n;
+    vtoroe(M,n);
 }
+
