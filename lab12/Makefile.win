@@ -1,0 +1,31 @@
+# Project: lab12
+# Makefile created by Dev-C++ 5.11
+
+CPP      = g++.exe
+CC       = gcc.exe
+WINDRES  = windres.exe
+OBJ      = main.o func.o
+LINKOBJ  = main.o func.o
+LIBS     = -L"C:/Program Files (x86)/Dev-Cpp/MinGW64/x86_64-w64-mingw32/lib32" -L"C:/Program Files (x86)/Dev-Cpp/MinGW64/SFML-2.5.1/lib" -L"C:/Program Files (x86)/Dev-Cpp/MinGW64/SFML-2.5.1/bin" -L"C:/Program Files (x86)/Dev-Cpp/MinGW64/SFML-2.5.1/include" -static-libgcc -lbgi -lgdi32 -luser32 -std=gnu++11 -std=c++11 -m32
+INCS     = -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/include" -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/x86_64-w64-mingw32/include" -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include"
+CXXINCS  = -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/include" -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/x86_64-w64-mingw32/include" -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include" -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include/c++" -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/SFML-2.5.1/bin" -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/SFML-2.5.1/include" -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/SFML-2.5.1/lib"
+BIN      = lab12.exe
+CXXFLAGS = $(CXXINCS) -m32
+CFLAGS   = $(INCS) -m32
+RM       = rm.exe -f
+
+.PHONY: all all-before all-after clean clean-custom
+
+all: all-before $(BIN) all-after
+
+clean: clean-custom
+	${RM} $(OBJ) $(BIN)
+
+$(BIN): $(OBJ)
+	$(CPP) $(LINKOBJ) -o $(BIN) $(LIBS)
+
+main.o: main.cpp
+	$(CPP) -c main.cpp -o main.o $(CXXFLAGS)
+
+func.o: func.cpp
+	$(CPP) -c func.cpp -o func.o $(CXXFLAGS)
