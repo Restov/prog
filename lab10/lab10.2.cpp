@@ -1,3 +1,9 @@
+/*
+==========================================
+ Title:  Lab10.1.
+ Author: Bakhmann, Kremlyakova
+ Date:   27.03.2020
+========================================== */
 #include<iostream>
 #include<fstream>
 #include<string.h>
