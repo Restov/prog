@@ -40,14 +40,14 @@ int main()
 			while(flag == true)
 			{
    			    if(st[i] == ','||st[i] == ' '||st[i] == '\n') // проверка на наличие ' ', ',', '/n'
-			    {
-				    flag = false;
-					++i;
-				}
-				else
-				{
+   			    {
+   			    	flag = false;
+   			    	++i;
+   			    }
+   			    else
+   			    {
 				    glasn << st[i]; //записываем букву в файл
-					++i;
+				    ++i;
 					fin.get(st[i]); //считываем следующи символ с файла
 				}
 			}
@@ -55,26 +55,26 @@ int main()
 		}
 		else // если буква согласная 
 		{
-		 	bool flag = true;
-		    while(flag==true)
-  			{
+			bool flag = true;
+			while(flag==true)
+			{
 			    if(st[i] == ','||st[i] == ' '||st[i] == '\n' ) // проверка на наличие ' ', ',', '/n'
-				{
-					flag = false;
-					++i;
-				}
-				else
-				{
+			    {
+			    	flag = false;
+			    	++i;
+			    }
+			    else
+			    {
 				 	sogl << st[i]; //записываем букву в файл
-				  	++i;
+				 	++i;
 				  	fin.get(st[i]); //считываем следующий символ с файла
-		  		}
-		    }
-			sogl << " ";
+				  }
+				}
+				sogl << " ";
+			}
 		}
-	}
     	fin.close(); //закрываем файлы
-	sogl.close();
-	glasn.close();
-	return 0;
-}
+    	sogl.close();
+    	glasn.close();
+    	return 0;
+    }
