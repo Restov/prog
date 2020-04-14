@@ -68,11 +68,11 @@ int main()
                     sogl << st[i]; //записываем букву в файл
                     ++i;
                     fin.get(st[i]); //считываем следующий символ с файла
-                  }
                 }
-                sogl << " ";
             }
+            sogl << " ";
         }
+    }
         fin.close(); //закрываем файлы
         sogl.close();
         glasn.close();
